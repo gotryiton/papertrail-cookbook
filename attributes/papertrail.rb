@@ -20,9 +20,6 @@ default['papertrail']['cert_url'] = "https://papertrailapp.com/tools/syslog.pape
 # ephemeral cloud nodes) you can set one of the following. If either is
 # set it will use the hostname_name first and the hostname_cmd second.
 
-# Set the logging hostname to this string.
-default['papertrail']['hostname_name'] = ""
-
 # Set the logging hostname to the output of this command passed to
 # system(). This is useful if the desired hostname comes from a
 # dynamic source like EC2 meta-data.

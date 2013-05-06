@@ -73,7 +73,7 @@ if node['papertrail']['watch_files'] && node['papertrail']['watch_files'].length
   end
 end
 
-hostname_name = node['papertrail']['hostname_name'].to_s || node['name']
+hostname_name = node.name
 hostname_cmd  = node['papertrail']['hostname_cmd'].to_s
 
 unless hostname_name.empty? && hostname_cmd.empty?
