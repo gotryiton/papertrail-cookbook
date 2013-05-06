@@ -76,8 +76,10 @@ end
 hostname_name = node.name
 hostname_cmd  = node['papertrail']['hostname_cmd'].to_s
 
+fixhostname = false
+
 unless hostname_name.empty? && hostname_cmd.empty?
-  node['papertrail']['fixhostname'] = true
+  fixhostname = true
 
   if !hostname_name.empty?
     name = hostname_name
@@ -103,7 +105,7 @@ template "#{syslogdir}/65-papertrail.conf" do
   variables({ :cert_file => node['papertrail']['cert_file'],
               :host => node['papertrail']['remote_host'],
               :port => node['papertrail']['remote_port'],
-              :fixhostname => node['papertrail']['fixhostname']
+              :fixhostname => fixhostname
             })
   notifies  :restart, resources(:service => syslogger)
 end
